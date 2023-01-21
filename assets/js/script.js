@@ -43,8 +43,6 @@ for (i = 0; i < 9; i++){
 }
 
 
-
-
 // Getting a time variable
 let timeLive = moment().format("H");
 
