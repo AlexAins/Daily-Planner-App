@@ -18,7 +18,6 @@ for (i = 0; i < 9; i++){
     // Adding hour colum to row
     var hourColEl = $("<div>");
     hourColEl.addClass("col hour");
-    hourColEl.text([i]);
     hourRowEl.append(hourColEl);
 
     // Adding text colum to row
@@ -31,6 +30,17 @@ for (i = 0; i < 9; i++){
     submitColEl.addClass("col saveBtn");
     submitColEl.text("Submit");
     hourRowEl.append(submitColEl);
+
+    if(i < 3){
+        hourColEl.text(i + 9 + "am");
+    }
+    else if(i == 3){
+        hourColEl.text(i + 9 + "pm");
+    }
+    else{
+        hourColEl.text(i - 3 + "pm");
+    }
+
 }
 
 
