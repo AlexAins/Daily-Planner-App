@@ -4,7 +4,7 @@ var containerEl = $("#containerEl");
 
 // Moments.js to make Date at top of screen
 var today = moment();
-currentDayEl.text(today.format("dddd, D MMMM YYYY"));
+currentDayEl.text(today.format("dddd, D MMMM YYYY, h:mm a"));
 
 // Getting a time variable
 let timeLive = moment().format("H");
