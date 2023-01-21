@@ -6,12 +6,18 @@ var containerEl = $("#containerEl");
 var today = moment();
 currentDayEl.text(today.format("dddd, D MMMM YYYY"));
 
+// Getting a time variable
+let timeLive = moment().format("H");
+
+
 // Making all rows
 for (i = 0; i < 9; i++){
 
     // Create Row
     var hourRowEl = $("<div>");
     hourRowEl.addClass("row time-block");
+    hourRowEl.attr("id", "row");
+    hourRowEl.attr('data-row', i);
     containerEl.append(hourRowEl);
 
     // Adding hour colum to row
@@ -40,22 +46,21 @@ for (i = 0; i < 9; i++){
     else{
         hourColEl.text(i - 3 + "pm");
     }
+
+    timeColor();
 }
-
-
-// Getting a time variable
-let timeLive = moment().format("H");
 
 
 // Setting attributes dependant on time
 function timeColor(){
-    if(timeLive > $("#9am").text()){
-        $("#9amText").addClass("past");
+    if(timeLive - 9  > hourRowEl.attr("data-row")){
+        textColEl.addClass("past");
     }
-    else if(timeLive == $("#9am").text()){
-        $("#9amText").addClass("present");
+    else if(timeLive - 9 == hourRowEl.attr("data-row")){
+        textColEl.addClass("present");
     }
-    else if(timeLive < $("#9am").text()){
-        $("#9amText").addClass("future");
+    else if(timeLive - 9 < hourRowEl.attr("data-row")){
+        textColEl.addClass("future");
     }
 }
+
