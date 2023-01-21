@@ -20,7 +20,7 @@ for (i = 0; i < 9; i++){
     // Create Row
     var hourRowEl = $("<div>");
     hourRowEl.addClass("row time-block");
-    hourRowEl.attr("id", "row");
+    hourRowEl.attr("id", "row"+i);
     hourRowEl.attr('data-row', i);
     containerEl.append(hourRowEl);
 
@@ -32,11 +32,14 @@ for (i = 0; i < 9; i++){
     // Adding text colum to row
     var textColEl = $("<textarea>");
     textColEl.addClass("col-10 description");
+    textColEl.attr("id", "text"+i);
     hourRowEl.append(textColEl);
 
     // Adding Submit Button to row
     var submitColEl = $("<button>");
     submitColEl.addClass("col saveBtn");
+    submitColEl.attr("id", "saveBtn"+i);
+    submitColEl.attr('data-time', i);
     submitColEl.text("Submit");
     hourRowEl.append(submitColEl);
 
@@ -53,6 +56,10 @@ for (i = 0; i < 9; i++){
 
     // Calling function to set background color based on time
     timeColor();
+
+    // Loading event from local storage
+    var eventText = localStorage.getItem(i);
+    textColEl.text(eventText);
 }
 
 
@@ -69,3 +76,12 @@ function timeColor(){
     }
 }
 
+
+// Saving event to local Storage
+
+$('button').on('click', function(event){
+    savedEventText = $(event.target).siblings("textarea").val();
+    savedEventIndex = $(event.target).attr("data-time");
+
+    localStorage.setItem(savedEventIndex, savedEventText);
+})
