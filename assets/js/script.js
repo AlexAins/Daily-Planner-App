@@ -1,6 +1,7 @@
 // Dom Elements
 var currentDayEl = $("#currentDay");
 var containerEl = $("#containerEl");
+var clearBtn = $("#clearBtn");
 
 // Moments.js to make Date at top of screen that update
 function renderClock(){
@@ -95,4 +96,10 @@ $('i').on('click', function(event){
     savedEventIndex = $(event.target).parent('button').attr("data-time");
 
     localStorage.setItem(savedEventIndex, savedEventText);
+})
+
+// Clear button on click
+clearBtn.on('click', function(){
+    localStorage.clear();
+    location.reload(true);
 })
