@@ -2,13 +2,13 @@
 var currentDayEl = $("#currentDay");
 var containerEl = $("#containerEl");
 
-// Moments.js to make Date at top of screen
+// Moments.js to make Date at top of screen that updates every minute
 function renderClock(){
     var today = moment();
     currentDayEl.text(today.format("dddd, D MMMM YYYY, h:mm a"));
 }
 
-window.setInterval(renderClock, 1000);
+window.setInterval(renderClock, 60000);
 
 // Getting a time variable
 let timeLive = moment().format("H");
