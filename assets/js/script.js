@@ -40,8 +40,12 @@ for (i = 0; i < 9; i++){
     submitColEl.addClass("col saveBtn");
     submitColEl.attr("id", "saveBtn"+i);
     submitColEl.attr('data-time', i);
-    submitColEl.text("Submit");
     hourRowEl.append(submitColEl);
+
+    // Adding Icon to button
+    var iconBtnEl = $("<i>");
+    iconBtnEl.addClass("far fa-save");
+    submitColEl.append(iconBtnEl);
 
     // Setting Hour text (added 9 to get index to hours and removed 3 to make it to pm hours)
     if(i < 3){
@@ -77,11 +81,18 @@ function timeColor(){
 }
 
 
-// Saving event to local Storage
+// Saving button and icon event to local Storage
 
 $('button').on('click', function(event){
     savedEventText = $(event.target).siblings("textarea").val();
     savedEventIndex = $(event.target).attr("data-time");
+
+    localStorage.setItem(savedEventIndex, savedEventText);
+})
+
+$('i').on('click', function(event){
+    savedEventText = $(event.target).parent('button').siblings("textarea").val();
+    savedEventIndex = $(event.target).parent('button').attr("data-time");
 
     localStorage.setItem(savedEventIndex, savedEventText);
 })
