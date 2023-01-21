@@ -40,7 +40,7 @@ for (i = 0; i < 9; i++){
     submitColEl.text("Submit");
     hourRowEl.append(submitColEl);
 
-    // Setting Hour text
+    // Setting Hour text (added 9 to get index to hours and removed 3 to make it to pm hours)
     if(i < 3){
         hourColEl.text(i + 9 + "am");
     }
@@ -55,7 +55,7 @@ for (i = 0; i < 9; i++){
 }
 
 
-// Setting attributes dependant on time
+// Setting attributes dependant on time (Removed 9 to get timeLive to equate to index of rows)
 function timeColor(){
     if(timeLive - 9  > hourRowEl.attr("data-row")){
         textColEl.addClass("past");
